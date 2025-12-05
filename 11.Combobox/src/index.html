@@ -11,29 +11,29 @@
 
 <div class="max-w-sm"
      x-data="{
-         zoekText: '',
-         steden: ['Brussel', 'Antwerpen', 'Gent', 'Luik', 'Brugge', 'Namen', 'Hasselt', 'Kortrijk'],
-         array: [],
-         open: false,
+                 zoekText: '',
+                 steden: ['Brussel', 'Antwerpen', 'Gent', 'Luik', 'Brugge', 'Namen', 'Hasselt', 'Kortrijk'],
+                 array: [],
+                 open: false,
 
-         filterCities() {
-             if (this.zoekText.length > 0) {
-                 this.filteredCities = this.steden.filter(city =>
-                     city.toLowerCase().startsWith(this.zoekText.toLowerCase())
-                 );
-                 this.open = true;
-             } else {
-                 this.filteredCities = [];
-                 this.open = false;
-             }
-         },
+                 filterCities() {
+                     if (this.zoekText.length > 0) {
+                         this.filteredCities = this.steden.filter(city =>
+                             city.toLowerCase().startsWith(this.zoekText.toLowerCase())
+                         );
+                         this.open = true;
+                     } else {
+                         this.filteredCities = [];
+                         this.open = false;
+                     }
+                 },
 
-         selectCity(city) {
-             this.zoekText = city;
-             this.open = false;
-             this.array = [];
-         }
-     }">
+                 selectCity(city) {
+                     this.zoekText = city;
+                     this.open = false;
+                     this.array = [];
+                 }
+             }">
 
     <label class="block text-sm font-medium text-slate-700 mb-1">
         Zoek stad

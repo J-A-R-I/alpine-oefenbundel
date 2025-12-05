@@ -10,33 +10,33 @@
 
 </head>
 <body class="p-4">
-<div class="relative inline-block text-left"
-     x-data="{ open: false }"
-     @keydown.escape.window="open = false">
+<div @keydown.escape.window="open = false"
+     class="relative inline-block text-left"
+     x-data="{ open: false }">
 
     <button
-            type="button"
-            class="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 text-white text-sm font-medium rounded-lg shadow hover:bg-slate-700"
             @click="open = !open"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 text-white text-sm font-medium rounded-lg shadow hover:bg-slate-700"
+            type="button"
     >
         Account
-        <svg class="w-4 h-4 transition-transform"
-             :class="open ? 'rotate-180' : ''"
+        <svg :class="open ? 'rotate-180' : ''"
+             class="w-4 h-4 transition-transform"
              fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M19 9l-7 7-7-7"/>
+            <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"
+                  stroke-width="2"/>
         </svg>
     </button>
 
     <div
-            x-show="open"
-            x-transition
             @click.outside="open = false"
             class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg ring-1 ring-black/5 py-1 text-sm text-slate-700"
+            x-show="open"
+            x-transition
     >
 
-        <a href="#" class="block px-4 py-2 hover:bg-slate-100">Profiel</a>
-        <a href="#" class="block px-4 py-2 hover:bg-slate-100">Instellingen</a>
+        <a class="block px-4 py-2 hover:bg-slate-100" href="#">Profiel</a>
+        <a class="block px-4 py-2 hover:bg-slate-100" href="#">Instellingen</a>
         <div class="border-t my-1"></div>
         <button class="w-full text-left px-4 py-2 text-red-600 hover:bg-orange-100">
             Afmelden

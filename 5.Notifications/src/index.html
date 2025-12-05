@@ -15,8 +15,7 @@
          addNotification() {
              const newId = this.nextId++;
              this.notifications.push({ id: newId, title: 'Succes!', message: 'Je wijziging werd opgeslagen.' });
-
-             // Automatisch sluiten na 3 seconden (Vereiste 4)
+             
              setTimeout(() => {
                  this.removeNotification(newId);
              }, 3000);
