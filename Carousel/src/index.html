@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <title>Modal Component</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="p-4">
+
+<div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8"
+     x-data="{index : 1, minIndex: 1, maxIndex: 3,
+         testimonials: [
+             { id: 1, text: '”Tekst van de testimonial 1”', author: 'Naam, functie' },
+             { id: 2, text: '”Tekst van de testimonial 2”', author: 'Naam, functie' },
+             { id: 3, text: '“Tekst van de testimonial 3!”', author: 'Naam, functie'  }
+         ],
+
+         get currentTestimonial() {
+             return this.testimonials.find(t => t.id === this.index);
+         }
+     }">
+
+    <div class="min-h-[120px]">
+        <p class="text-lg text-slate-800" x-text="currentTestimonial.text"></p>
+        <p class="mt-4 text-sm text-slate-500" x-text="currentTestimonial.author"></p>
+    </div>
+
+    <div class="mt-6 flex items-center justify-between">
+
+        <button @click="index = Math.max(index - 1, minIndex)"
+                :disabled="index === minIndex"
+                class="px-3 py-1 text-sm rounded-lg border border-slate-300 disabled:opacity-50 transition-opacity duration-200">
+            Vorige
+        </button>
+
+        <div class="flex items-center gap-2">
+            <template x-for="i in maxIndex" :key="i">
+                <span @click="index = i"
+                      class="h-2 w-2 rounded-full cursor-pointer transition-colors duration-200"
+                      :class="i === index ? 'bg-indigo-600' : 'bg-slate-300'">
+                </span>
+            </template>
+        </div>
+
+        <button @click="index = Math.min(index + 1, maxIndex)"
+                :disabled="index === maxIndex"
+                class="px-3 py-1 text-sm rounded-lg border border-slate-300 disabled:opacity-50 transition-opacity duration-200">
+            Volgende
+        </button>
+    </div>
+</div>
+
+</body>
+</html>

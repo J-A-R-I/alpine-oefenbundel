@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <title>Modal Component</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="p-4"  x-data="{
+         notifications: [],
+         nextId: 1,
+
+         addNotification() {
+             const newId = this.nextId++;
+             this.notifications.push({ id: newId, title: 'Succes!', message: 'Je wijziging werd opgeslagen.' });
+
+             // Automatisch sluiten na 3 seconden (Vereiste 4)
+             setTimeout(() => {
+                 this.removeNotification(newId);
+             }, 3000);
+         },
+
+         removeNotification(idToRemove) {
+             this.notifications = this.notifications.filter(n => n.id !== idToRemove);
+         }
+     }">
+<div class="p-6">
+
+    <button @click="addNotification()"
+            class="px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm shadow hover:bg-emerald-500">
+        Toon notificatie
+    </button>
+</div>
+
+<div class="fixed top-4 right-4 space-y-3">
+
+    <template x-for="notification in notifications" :key="notification.id">
+        <div x-transition.opacity
+             class="flex items-start gap-3 bg-white rounded-lg shadow-lg px-4 py-3 border border-emerald-100">
+
+            <div class="mt-1 h-2 w-2 rounded-full bg-emerald-500"></div>
+
+            <div class="text-sm text-slate-700">
+                <p class="font-medium text-slate-900" x-text="notification.title"></p>
+                <p x-text="notification.message"></p>
+            </div>
+
+            <button @click="remove(notification.id)"
+                    class="text-slate-400 hover:text-slate-600">
+                ✕
+            </button>
+        </div>
+    </template>
+</div>
+
+</body>
+</html>

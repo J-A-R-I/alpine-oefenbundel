@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <title>Modal Component</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="p-4">
+
+<div class="min-h-screen flex items-center justify-center transition-colors duration-300"
+     x-data="{ isDark: false }"
+     :class="{ 'bg-slate-50 text-slate-900': !isDark, 'bg-slate-900 text-slate-100': isDark }">
+
+    <div class="flex items-center gap-3">
+        <span class="text-sm font-medium">Licht</span>
+
+        <button @click="isDark = !isDark"
+                class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300"
+                :class="{ 'bg-slate-300': !isDark, 'bg-indigo-600': isDark }">
+
+            <span class="inline-block h-5 w-5 rounded-full bg-white shadow transform transition-transform duration-300"
+                  :class="{ 'translate-x-0': !isDark, 'translate-x-6': isDark }">
+                  </span>
+        </button>
+
+        <span class="text-sm font-medium">Donker</span>
+    </div>
+
+</div>
+
+</body>
+</html>
